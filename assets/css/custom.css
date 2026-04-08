@@ -47,7 +47,8 @@ body {
 
 /* ---------- 4. Link ativo na navbar ---------- */
 /* Classe adicionada via JavaScript com base na URL atual da página */
-#navbar a.active {
+/* Escopo restrito a <nav> para não afetar o botão CTA do header */
+#navbar nav a.active {
   color: var(--color-brand) !important;
   font-weight: 600;
 }

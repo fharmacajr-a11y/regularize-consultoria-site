@@ -80,7 +80,7 @@
      ================================================================= */
   var currentFile = window.location.pathname.split('/').pop() || 'index.html';
 
-  document.querySelectorAll('#navbar a[href]').forEach(function (link) {
+  document.querySelectorAll('#navbar nav a[href]').forEach(function (link) {
     var href = link.getAttribute('href');
 
     // Considera "/" ou "" como index.html
