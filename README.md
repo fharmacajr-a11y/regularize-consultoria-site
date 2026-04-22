@@ -10,15 +10,21 @@ Site estático da **Regularize Consultoria**, construído com HTML5 semântico, 
 regularize-consultoria-site/
 ├── index.html          → Home (hero, diferenciais, serviços em destaque, CTA)
 ├── sobre.html          → Sobre a empresa (missão, história, público-alvo)
-├── servicos.html       → Serviços (6 cards detalhados)
-├── contato.html        → Formulário de contato (Formspree + fallback mailto)
+├── servicos.html       → Serviços (cards detalhados)
+├── contato.html        → Página de contato (WhatsApp, e-mail, Instagram)
+├── CNAME               → Domínio personalizado para GitHub Pages
 ├── assets/
 │   ├── css/
-│   │   └── custom.css  → Variáveis de cor e overrides
+│   │   └── custom.css          → Variáveis de cor e overrides
 │   ├── js/
-│   │   └── main.js     → Navbar scroll, menu mobile, link ativo
-│   └── img/
-│       └── logorc2.png           → Logo oficial aplicada em header e footer
+│   │   └── main.js             → Navbar scroll, menu mobile, link ativo
+│   ├── img/
+│   │   └── logorc2.png         → Logo oficial (header e footer)
+│   └── icons/
+│       ├── favicon-16x16.ico   → Favicon 16x16
+│       ├── favicon-32x32.ico   → Favicon 32x32 (usado no site)
+│       ├── favicon-128x128.ico → Favicon 128x128
+│       └── login-gsa-48.ico    → Logo Gestor de Sites & Apps (rodapé)
 └── README.md           → Este arquivo
 ```
 
