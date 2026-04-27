@@ -170,4 +170,47 @@
     syncAvisosCountFromComunicado();
   }
 
+  /* =================================================================
+     5. IMAGEM DO AVISO: abre ampliada na propria pagina
+     ================================================================= */
+  var avisoImageTrigger = document.querySelector('[data-aviso-image-trigger]');
+  var avisoImageModal = document.getElementById('aviso-imagem-modal');
+  var avisoImageClose = avisoImageModal ? avisoImageModal.querySelector('[data-aviso-image-close]') : null;
+  var lastFocusedElement = null;
+
+  if (avisoImageTrigger && avisoImageModal && avisoImageClose) {
+    var openAvisoImageModal = function () {
+      lastFocusedElement = document.activeElement;
+      avisoImageModal.classList.remove('hidden');
+      avisoImageModal.classList.add('flex');
+      document.body.classList.add('overflow-hidden');
+      avisoImageClose.focus();
+    };
+
+    var closeAvisoImageModal = function () {
+      avisoImageModal.classList.add('hidden');
+      avisoImageModal.classList.remove('flex');
+      document.body.classList.remove('overflow-hidden');
+
+      if (lastFocusedElement && typeof lastFocusedElement.focus === 'function') {
+        lastFocusedElement.focus();
+      }
+    };
+
+    avisoImageTrigger.addEventListener('click', openAvisoImageModal);
+    avisoImageClose.addEventListener('click', closeAvisoImageModal);
+
+    avisoImageModal.addEventListener('click', function (event) {
+      if (event.target === avisoImageModal) {
+        closeAvisoImageModal();
+      }
+    });
+
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape' && !avisoImageModal.classList.contains('hidden')) {
+        closeAvisoImageModal();
+      }
+    });
+  }
+
 })();
