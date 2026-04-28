@@ -244,7 +244,42 @@
   renderAvisoUpdates();
 
   /* =================================================================
-     5. IMAGEM DO AVISO: abre ampliada na propria pagina
+     5. AVISOS NORMALIZADOS: resumo compacto com historico expansivel
+     ================================================================= */
+  function initializeAvisoHistoryToggles() {
+    document.querySelectorAll('[data-aviso-history-card]').forEach(function (article) {
+      var toggle = article.querySelector('[data-aviso-history-toggle]');
+      var toggleLabel = article.querySelector('[data-aviso-history-toggle-label]');
+      var toggleIcon = article.querySelector('[data-aviso-history-toggle-icon]');
+      var content = article.querySelector('[data-aviso-history-content]');
+
+      if (!toggle || !toggleLabel || !content) {
+        return;
+      }
+
+      var setExpandedState = function (expanded) {
+        content.classList.toggle('hidden', !expanded);
+        toggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+        toggleLabel.textContent = expanded ? 'Ocultar histórico' : 'Ver histórico completo';
+
+        if (toggleIcon) {
+          toggleIcon.classList.toggle('rotate-180', expanded);
+        }
+      };
+
+      setExpandedState(toggle.getAttribute('aria-expanded') === 'true');
+
+      toggle.addEventListener('click', function () {
+        var expanded = toggle.getAttribute('aria-expanded') === 'true';
+        setExpandedState(!expanded);
+      });
+    });
+  }
+
+  initializeAvisoHistoryToggles();
+
+  /* =================================================================
+     6. IMAGEM DO AVISO: abre ampliada na propria pagina
      ================================================================= */
   var avisoImageTriggers = document.querySelectorAll('[data-aviso-image-trigger]');
   var avisoImageModal = document.getElementById('aviso-imagem-modal');
