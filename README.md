@@ -12,7 +12,13 @@ regularize-consultoria-site/
 ├── sobre.html          → Sobre a empresa (missão, história, público-alvo)
 ├── servicos.html       → Serviços (cards detalhados)
 ├── contato.html        → Página de contato (WhatsApp, e-mail, Instagram)
+├── blog_noticias.html  → Índice SEO de notícias e artigos
+├── sitemap.xml         → Sitemap para mecanismos de busca
+├── robots.txt          → Regras de rastreamento e link do sitemap
 ├── CNAME               → Domínio personalizado para GitHub Pages
+├── noticias/
+│   ├── template-artigo.html → Modelo para novos artigos
+│   └── *.html               → Artigos individuais com URL própria
 ├── assets/
 │   ├── css/
 │   │   └── custom.css          → Variáveis de cor e overrides
@@ -150,7 +156,25 @@ Edite o bloco `:root {}` em [assets/css/custom.css](assets/css/custom.css):
 
 ---
 
-## 5. Pendências para a próxima fase
+## 5. Como publicar uma nova notícia/artigo
+
+1. Abra `noticias/template-artigo.html`.
+2. Duplique o arquivo.
+3. Renomeie usando um slug SEO em minúsculas, por exemplo:
+   `farmacia-popular-documentos-necessarios.html`.
+4. Edite o título, descrição, data, categoria, texto do artigo, URL canônica e campos do JSON-LD.
+5. Abra `blog_noticias.html`.
+6. Copie um card de artigo existente.
+7. Cole o card perto do topo da lista de artigos.
+8. Atualize título, data, resumo, categoria, palavras-chave e link do card.
+9. Abra `sitemap.xml`.
+10. Adicione a URL do novo artigo.
+11. Teste localmente.
+12. Faça commit e publique.
+
+---
+
+## 6. Pendências para a próxima fase
 
 - [x] **Logo real** — `assets/img/logorc2.png` aplicada em header e footer de todas as páginas.
 - [ ] **Formspree ID** — configurar o endpoint real do formulário de contato em `contato.html`.
@@ -159,7 +183,7 @@ Edite o bloco `:root {}` em [assets/css/custom.css](assets/css/custom.css):
 
 ---
 
-## 6. Tecnologias utilizadas
+## 7. Tecnologias utilizadas
 
 | Tecnologia | Finalidade |
 |---|---|

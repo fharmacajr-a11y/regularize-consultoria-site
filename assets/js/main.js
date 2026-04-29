@@ -78,15 +78,19 @@
         ao link correspondente na navbar
         → custom.css aplica cor e font-weight no link .active
      ================================================================= */
-  var currentFile = window.location.pathname.split('/').pop() || 'index.html';
+  var currentPath = window.location.pathname;
+  var currentFile = currentPath.split('/').pop() || 'index.html';
+  var isNoticiasArticle = currentPath.indexOf('/noticias/') !== -1 || currentPath.indexOf('\\noticias\\') !== -1;
 
   document.querySelectorAll('#navbar nav a[href]').forEach(function (link) {
     var href = link.getAttribute('href');
+    var normalizedHref = href ? href.split('/').pop() : '';
 
     // Considera "/" ou "" como index.html
     if (
-      href === currentFile ||
-      (currentFile === '' && href === 'index.html')
+      normalizedHref === currentFile ||
+      (currentFile === '' && normalizedHref === 'index.html') ||
+      (isNoticiasArticle && normalizedHref === 'blog_noticias.html')
     ) {
       link.classList.add('active');
     }
@@ -174,7 +178,9 @@
   }
 
   function syncAvisosCountFromComunicado() {
-    fetch('comunicado.html', { cache: 'no-store' })
+    var comunicadoPath = isNoticiasArticle ? '../comunicado.html' : 'comunicado.html';
+
+    fetch(comunicadoPath, { cache: 'no-store' })
       .then(function (response) {
         if (!response.ok) {
           throw new Error('Falha ao carregar comunicado.html');
@@ -284,7 +290,83 @@
   initializeAvisoHistoryToggles();
 
   /* =================================================================
-     6. IMAGEM DO AVISO: abre ampliada na propria pagina
+     6. BLOG: busca e filtros da pagina blog_noticias.html
+     ================================================================= */
+  function initializeBlogFilters() {
+    var blogList = document.getElementById('blog-article-list');
+    var searchInput = document.getElementById('blog-search');
+    var filterButtons = document.querySelectorAll('[data-blog-category]');
+    var resultCount = document.getElementById('blog-result-count');
+    var emptyState = document.getElementById('blog-empty-state');
+
+    if (!blogList || !searchInput || !filterButtons.length || !resultCount || !emptyState) {
+      return;
+    }
+
+    var articleCards = Array.prototype.slice.call(blogList.querySelectorAll('[data-blog-card]'));
+    var activeCategory = 'Todos';
+
+    function normalizeText(value) {
+      return (value || '')
+        .toString()
+        .toLowerCase()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .trim();
+    }
+
+    function updateResults() {
+      var query = normalizeText(searchInput.value);
+      var normalizedCategory = normalizeText(activeCategory);
+      var visibleCount = 0;
+
+      articleCards.forEach(function (card) {
+        var cardCategory = card.getAttribute('data-category') || '';
+        var haystack = normalizeText([
+          card.getAttribute('data-title'),
+          card.getAttribute('data-summary'),
+          card.getAttribute('data-category'),
+          card.getAttribute('data-keywords'),
+          card.textContent
+        ].join(' '));
+        var matchesSearch = !query || haystack.indexOf(query) !== -1;
+        var matchesCategory = activeCategory === 'Todos' || normalizeText(cardCategory) === normalizedCategory;
+        var isVisible = matchesSearch && matchesCategory;
+
+        card.classList.toggle('hidden', !isVisible);
+
+        if (isVisible) {
+          visibleCount += 1;
+        }
+      });
+
+      resultCount.textContent = visibleCount === 1
+        ? '1 artigo encontrado'
+        : visibleCount + ' artigos encontrados';
+      emptyState.classList.toggle('hidden', visibleCount !== 0);
+    }
+
+    searchInput.addEventListener('input', updateResults);
+
+    filterButtons.forEach(function (button) {
+      button.addEventListener('click', function () {
+        activeCategory = button.getAttribute('data-blog-category') || 'Todos';
+
+        filterButtons.forEach(function (item) {
+          item.setAttribute('aria-pressed', item === button ? 'true' : 'false');
+        });
+
+        updateResults();
+      });
+    });
+
+    updateResults();
+  }
+
+  initializeBlogFilters();
+
+  /* =================================================================
+     7. IMAGEM DO AVISO: abre ampliada na propria pagina
      ================================================================= */
   var avisoImageTriggers = document.querySelectorAll('[data-aviso-image-trigger]');
   var avisoImageModal = document.getElementById('aviso-imagem-modal');
