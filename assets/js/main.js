@@ -298,6 +298,7 @@
     var filterButtons = document.querySelectorAll('[data-blog-category]');
     var resultCount = document.getElementById('blog-result-count');
     var emptyState = document.getElementById('blog-empty-state');
+    var sortButtons = document.querySelectorAll('[data-blog-sort]');
 
     if (!blogList || !searchInput || !filterButtons.length || !resultCount || !emptyState) {
       return;
@@ -305,6 +306,7 @@
 
     var articleCards = Array.prototype.slice.call(blogList.querySelectorAll('[data-blog-card]'));
     var activeCategory = 'Todos';
+    var activeSort = 'desc';
 
     function normalizeText(value) {
       return (value || '')
@@ -313,6 +315,24 @@
         .normalize('NFD')
         .replace(/[\u0300-\u036f]/g, '')
         .trim();
+    }
+
+    function getCardTimestamp(card) {
+      var time = card.querySelector('time[datetime]');
+      var timestamp = time ? Date.parse(time.getAttribute('datetime')) : 0;
+      return Number.isNaN(timestamp) ? 0 : timestamp;
+    }
+
+    function sortArticles() {
+      var direction = activeSort === 'asc' ? 1 : -1;
+
+      articleCards.sort(function (firstCard, secondCard) {
+        return (getCardTimestamp(firstCard) - getCardTimestamp(secondCard)) * direction;
+      });
+
+      articleCards.forEach(function (card) {
+        blogList.appendChild(card);
+      });
     }
 
     function updateResults() {
@@ -348,6 +368,19 @@
 
     searchInput.addEventListener('input', updateResults);
 
+    sortButtons.forEach(function (button) {
+      button.addEventListener('click', function () {
+        activeSort = button.getAttribute('data-blog-sort') || 'desc';
+
+        sortButtons.forEach(function (item) {
+          item.setAttribute('aria-pressed', item === button ? 'true' : 'false');
+        });
+
+        sortArticles();
+        updateResults();
+      });
+    });
+
     filterButtons.forEach(function (button) {
       button.addEventListener('click', function () {
         activeCategory = button.getAttribute('data-blog-category') || 'Todos';
@@ -360,6 +393,7 @@
       });
     });
 
+    sortArticles();
     updateResults();
   }
 

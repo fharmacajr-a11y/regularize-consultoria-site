@@ -38,9 +38,15 @@
   </url>
   <url>
     <loc>https://www.regularizeconsultorias.com.br/blog_noticias.html</loc>
-    <lastmod>2026-04-28</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.regularizeconsultorias.com.br/noticias/nova-regra-anvisa-cnes-receitas-farmacias.html</loc>
+    <lastmod>2026-04-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.regularizeconsultorias.com.br/noticias/como-acompanhar-instabilidades-sistemas-anvisa.html</loc>
