@@ -456,4 +456,27 @@
     });
   }
 
+  /* =================================================================
+     5. BOTÃO VOLTAR AO TOPO: exibe após 300 px de scroll e rola suavemente
+        → custom.css controla a transição via .is-visible em .floating-btn--top
+     ================================================================= */
+  var btnVoltarTopo = document.getElementById('btn-voltar-topo');
+
+  if (btnVoltarTopo) {
+    var handleScrollTop = function () {
+      if (window.scrollY > 300) {
+        btnVoltarTopo.classList.add('is-visible');
+      } else {
+        btnVoltarTopo.classList.remove('is-visible');
+      }
+    };
+
+    window.addEventListener('scroll', handleScrollTop, { passive: true });
+    handleScrollTop();
+
+    btnVoltarTopo.addEventListener('click', function () {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
 })();

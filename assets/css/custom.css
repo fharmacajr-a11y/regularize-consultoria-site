@@ -222,3 +222,79 @@ footer img[alt="Regularize Consultoria"] {
   text-decoration: underline;
   text-underline-offset: 3px;
 }
+
+/* ---------- 8. Botões flutuantes: WhatsApp + Voltar ao Topo ---------- */
+.floating-buttons {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  z-index: 9999;
+}
+
+.floating-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+  transition: transform 0.2s ease, box-shadow 0.2s ease,
+              opacity 0.3s ease, visibility 0.3s ease;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.floating-btn svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  flex-shrink: 0;
+}
+
+.floating-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* WhatsApp – verde oficial */
+.floating-btn--whatsapp {
+  background-color: #25d366;
+}
+
+/* Voltar ao topo – cor da brand; oculto por padrão */
+.floating-btn--top {
+  background-color: var(--color-brand);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.floating-btn--top.is-visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* Mobile: botões levemente menores para não sobrepor conteúdo */
+@media (max-width: 640px) {
+  .floating-buttons {
+    bottom: 1rem;
+    right: 1rem;
+  }
+
+  .floating-btn {
+    width: 2.75rem;
+    height: 2.75rem;
+  }
+
+  .floating-btn svg {
+    width: 1.375rem;
+    height: 1.375rem;
+  }
+}
