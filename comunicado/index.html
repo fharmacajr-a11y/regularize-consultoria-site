@@ -124,7 +124,7 @@
     <section class="py-10 bg-white border-b border-slate-100">
       <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <p class="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-5">Tipos de aviso</p>
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
 
           <!-- Urgente -->
           <div class="flex items-start gap-3 p-4 rounded-xl bg-red-50 border border-red-200">
@@ -136,39 +136,55 @@
             </div>
             <div>
               <span class="inline-block px-3 py-1 rounded-full bg-red-50 text-red-600 text-xs font-semibold uppercase tracking-wide border border-red-200 mb-2">Urgente</span>
-              <p class="text-xs text-slate-500 leading-relaxed">
+              <p class="text-xs text-slate-700 leading-relaxed">
                 Comunicados críticos que exigem atenção imediata — prazos, mudanças em legislação ou ações necessárias.
               </p>
             </div>
           </div>
 
           <!-- Informativo -->
-          <div class="flex items-start gap-3 p-4 rounded-xl bg-amber-50 border border-amber-200">
-            <div class="flex-shrink-0 w-9 h-9 rounded-lg bg-amber-100 flex items-center justify-center">
-              <svg class="w-4 h-4 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div class="flex items-start gap-3 p-4 rounded-xl bg-orange-50 border border-orange-200">
+            <div class="flex-shrink-0 w-9 h-9 rounded-lg bg-orange-100 flex items-center justify-center">
+              <svg class="w-4 h-4 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                   d="M13 16h-1v-4h-1m1-4h.01M12 2a10 10 0 100 20A10 10 0 0012 2z"/>
               </svg>
             </div>
             <div>
-              <span class="inline-block px-3 py-1 rounded-full bg-amber-50 text-amber-600 text-xs font-semibold uppercase tracking-wide border border-amber-200 mb-2">Informativo</span>
-              <p class="text-xs text-slate-500 leading-relaxed">
+              <span class="inline-block px-3 py-1 rounded-full bg-orange-50 text-orange-600 text-xs font-semibold uppercase tracking-wide border border-orange-200 mb-2">Informativo</span>
+              <p class="text-xs text-slate-700 leading-relaxed">
                 Novidades, atualizações de processos e informações gerais relevantes para clientes e parceiros.
               </p>
             </div>
           </div>
 
+          <!-- Atualização -->
+          <div class="flex items-start gap-3 p-4 rounded-xl bg-yellow-50 border border-yellow-200">
+            <div class="flex-shrink-0 w-9 h-9 rounded-lg bg-yellow-100 flex items-center justify-center">
+              <svg class="w-4 h-4 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9M4.582 9H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+              </svg>
+            </div>
+            <div>
+              <span class="inline-block px-3 py-1 rounded-full bg-yellow-50 text-yellow-600 text-xs font-semibold uppercase tracking-wide border border-yellow-200 mb-2">ATUALIZAÇÃO</span>
+              <p class="text-xs text-slate-700 leading-relaxed">
+                Mudanças, revisões de prazo ou orientações atualizadas sobre comunicados já publicados.
+              </p>
+            </div>
+          </div>
+
           <!-- Útil -->
-          <div class="flex items-start gap-3 p-4 rounded-xl bg-green-50 border border-green-200">
-            <div class="flex-shrink-0 w-9 h-9 rounded-lg bg-green-100 flex items-center justify-center">
-              <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div class="flex items-start gap-3 p-4 rounded-xl bg-emerald-50 border border-emerald-200">
+            <div class="flex-shrink-0 w-9 h-9 rounded-lg bg-emerald-100 flex items-center justify-center">
+              <svg class="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                   d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
               </svg>
             </div>
             <div>
-              <span class="inline-block px-3 py-1 rounded-full bg-green-50 text-green-700 text-xs font-semibold uppercase tracking-wide border border-green-200 mb-2">Útil</span>
-              <p class="text-xs text-slate-500 leading-relaxed">
+              <span class="inline-block px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-semibold uppercase tracking-wide border border-emerald-200 mb-2">Útil</span>
+              <p class="text-xs text-slate-700 leading-relaxed">
                 Avisos leves do dia a dia — dicas práticas e informações úteis do setor.
               </p>
             </div>
@@ -263,20 +279,20 @@
           </article>
 
           <!-- ═══════════════════════════════════════════════════════
-                 URGENTE — aviso ativo
+                 ATUALIZAÇÃO — prazo encerrado
                ═══════════════════════════════════════════════════════ -->
-          <article data-status="urgent" data-category="farmacia-popular" data-aviso-history-card class="rounded-2xl border border-red-200 bg-red-50 p-5 shadow-sm md:p-6">
+          <article data-status="atualizacao" data-category="farmacia-popular" data-aviso-history-card class="rounded-2xl border border-yellow-200 bg-yellow-50 p-5 shadow-sm md:p-6">
             <div class="flex flex-col gap-4">
               <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
                 <div class="flex items-center gap-3">
-                  <div class="flex-shrink-0 w-10 h-10 rounded-xl bg-red-100 flex items-center justify-center">
-                    <svg class="w-5 h-5 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div class="flex-shrink-0 w-10 h-10 rounded-xl bg-yellow-100 flex items-center justify-center">
+                    <svg class="w-5 h-5 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M12 9v2m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/>
+                        d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9M4.582 9H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
                     </svg>
                   </div>
-                  <span class="inline-block rounded-full border border-red-200 bg-red-50 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-red-600">
-                    Urgente
+                  <span class="inline-block rounded-full border border-yellow-200 bg-yellow-50 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-yellow-600">
+                    ATUALIZAÇÃO
                   </span>
                 </div>
                 <div class="flex flex-col sm:items-end gap-1 text-xs text-slate-400">
@@ -290,59 +306,70 @@
                   <span class="flex flex-wrap items-center gap-1 sm:justify-end">
                     <svg class="w-3.5 h-3.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9M4.582 9H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+                    </svg>
+                    Atualizado em: <strong class="text-slate-600">18/05/2026</strong>
+                  </span>
+                  <span class="flex flex-wrap items-center gap-1 sm:justify-end">
+                    <svg class="w-3.5 h-3.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
                     </svg>
-                    Prazo para regularização: <strong class="text-slate-600">até 13/05/2026</strong>
+                    Prazo encerrado em: <strong class="text-slate-600">13/05/2026</strong>
                   </span>
                 </div>
               </div>
 
               <div class="space-y-3">
-                <h3 class="text-lg font-bold text-slate-900">SIFAP reabre para regularização cadastral de farmácias notificadas até 13 de maio</h3>
+                <h3 class="text-lg font-bold text-slate-900">SIFAP: prazo de regularização cadastral informado para 13/05/2026 foi encerrado</h3>
                 <div class="space-y-3 text-sm leading-relaxed text-slate-700">
                   <p>
-                    <strong class="text-red-700">Atenção:</strong> este aviso é destinado <strong class="text-slate-900">apenas às farmácias e drogarias credenciadas ao Programa Farmácia Popular que receberam notificação de regularização cadastral por e-mail</strong>. Se sua empresa não recebeu essa notificação ou já concluiu o processo no SIFAP, não é necessário realizar nova ação neste momento.
+                    <strong class="text-yellow-600">Atenção:</strong> o prazo informado para regularização cadastral no SIFAP, destinado às farmácias e drogarias credenciadas ao Programa Farmácia Popular que receberam notificação por e-mail, teve encerramento previsto em <strong class="text-slate-900">13/05/2026</strong>.
                   </p>
                   <p>
-                    Conforme a comunicação enviada às empresas notificadas, o SIFAP foi reaberto em 29/04/2026, com encerramento previsto para 13/05/2026. Nesse período, a empresa deve acessar o sistema, revisar pendências cadastrais e documentais e acompanhar a etapa final de assinatura do RTA.
+                    Até o momento, não identificamos nova prorrogação oficial publicada em fonte pública. As empresas notificadas devem acessar o SIFAP e verificar imediatamente o status do processo, especialmente se houver pendência documental, cadastro pendente, análise em andamento ou etapa de RTA pendente.
+                  </p>
+                  <p>
+                    A regularização só deve ser considerada concluída após a assinatura do RTA — Requerimento e Termo de Adesão — quando essa etapa estiver disponível no sistema.
                   </p>
                 </div>
                 <div class="flex flex-wrap items-center gap-4">
-                  <button type="button" data-aviso-history-toggle data-aviso-history-expand-label="Ver orientações completas" data-aviso-history-collapse-label="Ocultar orientações" aria-expanded="false" aria-controls="aviso-historico-sifap" class="inline-flex items-center gap-2 rounded-lg text-sm font-semibold text-red-600 transition-colors duration-200 hover:text-red-700 focus:outline-none focus:ring-2 focus:ring-red-200 focus:ring-offset-2">
-                    <span data-aviso-history-toggle-label>Ver orientações completas</span>
+                  <button type="button" data-aviso-history-toggle data-aviso-history-expand-label="O que fazer agora" data-aviso-history-collapse-label="Ocultar orientações" aria-expanded="false" aria-controls="aviso-historico-sifap" class="inline-flex items-center gap-2 rounded-lg text-sm font-semibold text-yellow-600 transition-colors duration-200 hover:text-yellow-700 focus:outline-none focus:ring-2 focus:ring-yellow-200 focus:ring-offset-2">
+                    <span data-aviso-history-toggle-label>O que fazer agora</span>
                     <svg data-aviso-history-toggle-icon class="h-4 w-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                     </svg>
                   </button>
-                  <a href="/noticias/sifap-regularizacao-cadastral-farmacias-notificadas-13-maio/" class="inline-flex items-center gap-2 rounded-lg border border-red-200 px-4 py-2 text-sm font-semibold text-red-600 transition-colors duration-200 hover:border-red-300 hover:bg-red-100 hover:text-red-700">
-                    Ler notícia completa
+                  <a href="/noticias/prazo-sifap-terminou-pendencias-analise-rta-farmacia-popular/" class="inline-flex items-center gap-2 rounded-lg border border-yellow-200 px-4 py-2 text-sm font-semibold text-yellow-600 transition-colors duration-200 hover:border-yellow-300 hover:bg-yellow-100 hover:text-yellow-700">
+                    Ver orientação pós-prazo
                     <span aria-hidden="true">→</span>
                   </a>
                 </div>
               </div>
 
-              <div id="aviso-historico-sifap" data-aviso-history-content class="hidden border-t border-red-100 pt-4">
+              <div id="aviso-historico-sifap" data-aviso-history-content class="hidden border-t border-yellow-200 pt-4">
                 <div class="space-y-3 text-sm leading-relaxed text-slate-700">
                   <div>
-                    <p class="font-semibold text-slate-900 mb-2">O que fazer:</p>
+                    <p class="font-semibold text-slate-900 mb-2">O que fazer agora:</p>
                     <ul class="list-disc pl-5 space-y-1">
-                      <li>Acesse o SIFAP e verifique as pendências cadastrais ou documentais indicadas na notificação.</li>
-                      <li>Revise o status do processo, os documentos exigidos e a etapa de assinatura do RTA.</li>
-                      <li>Evite deixar o envio ou a conferência para os últimos dias da janela informada.</li>
+                      <li>Acesse o SIFAP e confira o status do processo.</li>
+                      <li>Verifique se há pendência documental ou cadastro pendente.</li>
+                      <li>Se o status estiver em análise, acompanhe o retorno da CAIXA.</li>
+                      <li>Se o status estiver como RTA PENDENTE, o responsável legal deve realizar a assinatura.</li>
+                      <li>Em caso de erro no sistema, utilize os canais oficiais da CAIXA e do Farmácia Popular.</li>
                     </ul>
                   </div>
                   <p>
-                    A regularização só deve ser considerada concluída após a assinatura do RTA – Requerimento e Termo de Adesão, quando essa etapa estiver disponível.
+                    A regularização só deve ser considerada concluída após a assinatura do RTA – Requerimento e Termo de Adesão, quando essa etapa estiver disponível no sistema.
                   </p>
                   <p>
-                    Em caso de erro ou travamento do SIFAP, utilize os canais oficiais de suporte da CAIXA e do Farmácia Popular:
+                    Em caso de erro no sistema, dificuldade de acesso ou dúvida sobre o andamento, utilize os canais oficiais:
                   </p>
                   <p class="text-slate-800">
-                    4004 0104 para capitais e regiões metropolitanas;<br>
-                    0800 104 0104 para demais localidades;<br>
-                    opção 6 – suporte aos aplicativos;<br>
+                    CAIXA: 4004 0104 para capitais e regiões metropolitanas;<br>
+                    CAIXA: 0800 104 0104 para demais localidades, opção 6;<br>
                     Ouvidoria 136;<br>
-                    <a href="mailto:analise.fpopular@saude.gov.br" class="font-medium text-brand hover:text-brand-dark transition-colors duration-200">analise.fpopular@saude.gov.br</a> e
+                    <a href="mailto:analise.fpopular@saude.gov.br" class="font-medium text-brand hover:text-brand-dark transition-colors duration-200">analise.fpopular@saude.gov.br</a>;<br>
                     <a href="mailto:cadastrofpopular@saude.gov.br" class="font-medium text-brand hover:text-brand-dark transition-colors duration-200">cadastrofpopular@saude.gov.br</a>.
                   </p>
                   <p>
@@ -356,16 +383,16 @@
           <!-- ═══════════════════════════════════════════════════════
                  INFORMATIVO — aviso ativo
                ═══════════════════════════════════════════════════════ -->
-          <article data-status="informativo" data-updated-at="10/05/2026 às 00:59" data-aviso-history-card class="rounded-2xl border border-amber-200 bg-white p-6 shadow-sm md:p-8">
+          <article data-status="informativo" data-updated-at="10/05/2026 às 00:59" data-aviso-history-card class="rounded-2xl border border-orange-200 bg-orange-50 p-6 shadow-sm md:p-8">
             <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-4">
               <div class="flex items-center gap-3">
-                <div class="flex-shrink-0 w-10 h-10 rounded-xl bg-amber-100 flex items-center justify-center">
-                  <svg class="w-5 h-5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="flex-shrink-0 w-10 h-10 rounded-xl bg-orange-100 flex items-center justify-center">
+                  <svg class="w-5 h-5 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                       d="M13 16h-1v-4h-1m1-4h.01M12 2a10 10 0 100 20A10 10 0 0012 2z"/>
                   </svg>
                 </div>
-                <span class="inline-block rounded-full border border-amber-200 bg-amber-50 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-amber-600">
+                <span class="inline-block rounded-full border border-orange-200 bg-orange-50 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-orange-600">
                   Informativo
                 </span>
               </div>
@@ -407,7 +434,7 @@
               <p>
                 O acesso ao cadastro antigo ainda pode permanecer disponível para empresas já cadastradas, mas alguns usuários podem encontrar instabilidade, bloqueio de acesso ou dificuldade de autenticação durante esse período de transição.
               </p>
-              <button type="button" data-aviso-history-toggle data-aviso-history-expand-label="Ver orientações completas" data-aviso-history-collapse-label="Ocultar orientações" aria-expanded="false" aria-controls="aviso-historico-seguranca-cadastro" class="inline-flex items-center gap-2 rounded-lg text-sm font-semibold text-amber-600 transition-colors duration-200 hover:text-amber-700 focus:outline-none focus:ring-2 focus:ring-amber-200 focus:ring-offset-2">
+              <button type="button" data-aviso-history-toggle data-aviso-history-expand-label="Ver orientações completas" data-aviso-history-collapse-label="Ocultar orientações" aria-expanded="false" aria-controls="aviso-historico-seguranca-cadastro" class="inline-flex items-center gap-2 rounded-lg text-sm font-semibold text-orange-600 transition-colors duration-200 hover:text-orange-700 focus:outline-none focus:ring-2 focus:ring-orange-200 focus:ring-offset-2">
                 <span data-aviso-history-toggle-label>Ver orientações completas</span>
                 <svg data-aviso-history-toggle-icon class="h-4 w-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
@@ -415,7 +442,7 @@
               </button>
             </div>
 
-            <div id="aviso-historico-seguranca-cadastro" data-aviso-history-content class="hidden border-t border-amber-100 pt-4">
+            <div id="aviso-historico-seguranca-cadastro" data-aviso-history-content class="hidden border-t border-orange-100 pt-4">
               <div class="space-y-3 text-sm leading-relaxed text-slate-700">
                 <figure class="mx-auto max-w-xl rounded-2xl border border-slate-200 bg-slate-50 p-3 md:p-4">
                   <button type="button" data-aviso-image-trigger data-aviso-image-src="/assets/img/comunicados/anvisa/2026-04-27-sngpc-seguranca/sngpc-sistema-seguranca.jpg" data-aviso-image-title="Imagem ilustrativa da indisponibilidade no Sistema de Segurança da Anvisa" aria-haspopup="dialog" aria-controls="aviso-imagem-modal" class="block w-full overflow-hidden rounded-xl border border-slate-200 shadow-sm transition-transform duration-200 hover:scale-[1.01] hover:shadow-md focus:outline-none focus:ring-2 focus:ring-brand/30">
@@ -449,7 +476,7 @@
           <!-- ═══════════════════════════════════════════════════════
                  NORMALIZADO — aviso mantido como histórico
                ═══════════════════════════════════════════════════════ -->
-          <article data-status="normalizado" data-updated-at="28/04/2026 às 08:28" data-resolved-at="28/04/2026 às 12:57" data-aviso-history-card class="rounded-2xl border border-emerald-200 bg-white p-5 shadow-sm md:p-6">
+          <article data-status="normalizado" data-updated-at="28/04/2026 às 08:28" data-resolved-at="28/04/2026 às 12:57" data-aviso-history-card class="rounded-2xl border border-emerald-200 bg-emerald-50 p-5 shadow-sm md:p-6">
             <div class="flex flex-col gap-4">
               <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
               <div class="flex items-center gap-3">
@@ -545,7 +572,7 @@
           <!-- ═══════════════════════════════════════════════════════
                  NORMALIZADO — aviso mantido como histórico
                ═══════════════════════════════════════════════════════ -->
-            <article data-status="normalizado" data-updated-at="28/04/2026 às 08:28" data-resolved-at="28/04/2026 às 12:57" data-aviso-history-card class="rounded-2xl border border-emerald-200 bg-white p-5 shadow-sm md:p-6">
+            <article data-status="normalizado" data-updated-at="28/04/2026 às 08:28" data-resolved-at="28/04/2026 às 12:57" data-aviso-history-card class="rounded-2xl border border-emerald-200 bg-emerald-50 p-5 shadow-sm md:p-6">
               <div class="flex flex-col gap-4">
                 <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
                 <div class="flex items-center gap-3">
