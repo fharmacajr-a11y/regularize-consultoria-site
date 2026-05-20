@@ -317,7 +317,7 @@
   initializeAvisoHistoryToggles();
 
   /* =================================================================
-     6. BLOG: busca e filtros da página de notícias
+     6. BLOG: busca, filtros e carregar mais na página de notícias
      ================================================================= */
   function initializeBlogFilters() {
     var blogList = document.getElementById('blog-article-list');
@@ -334,6 +334,21 @@
     var articleCards = Array.prototype.slice.call(blogList.querySelectorAll('[data-blog-card]'));
     var activeCategory = 'Todos';
     var activeSort = 'desc';
+
+    // --- Carregar mais (mobile-first) ---
+    // Apenas ativa quando o botão existe na página (somente /noticias/)
+    var MOBILE_INITIAL_LIMIT = 5;
+    var TABLET_INITIAL_LIMIT = 8;
+    var LOAD_MORE_STEP = 5;
+    var loadMoreBtn = document.getElementById('btn-carregar-mais');
+
+    function getInitialLimit() {
+      if (window.matchMedia('(min-width: 1024px)').matches) return Infinity;
+      if (window.matchMedia('(min-width: 640px)').matches) return TABLET_INITIAL_LIMIT;
+      return MOBILE_INITIAL_LIMIT;
+    }
+
+    var currentLimit = loadMoreBtn ? getInitialLimit() : Infinity;
 
     function normalizeText(value) {
       return (value || '')
@@ -365,8 +380,9 @@
     function updateResults() {
       var query = normalizeText(searchInput.value);
       var normalizedCategory = normalizeText(activeCategory);
-      var visibleCount = 0;
+      var matchingCards = [];
 
+      // 1ª passagem: separa os cards que batem com busca + categoria
       articleCards.forEach(function (card) {
         var cardCategory = card.getAttribute('data-category') || '';
         var haystack = normalizeText([
@@ -378,22 +394,49 @@
         ].join(' '));
         var matchesSearch = !query || haystack.indexOf(query) !== -1;
         var matchesCategory = activeCategory === 'Todos' || normalizeText(cardCategory) === normalizedCategory;
-        var isVisible = matchesSearch && matchesCategory;
 
-        card.classList.toggle('hidden', !isVisible);
-
-        if (isVisible) {
-          visibleCount += 1;
+        if (matchesSearch && matchesCategory) {
+          matchingCards.push(card);
+        } else {
+          card.classList.add('hidden');
         }
       });
 
-      resultCount.textContent = visibleCount === 1
-        ? '1 artigo encontrado'
-        : visibleCount + ' artigos encontrados';
-      emptyState.classList.toggle('hidden', visibleCount !== 0);
+      // 2ª passagem: aplica o limite atual (respeitando breakpoint + clicks no botão)
+      matchingCards.forEach(function (card, index) {
+        card.classList.toggle('hidden', index >= currentLimit);
+      });
+
+      var totalMatching = matchingCards.length;
+
+      resultCount.textContent = totalMatching === 1
+        ? '1 notícia encontrada'
+        : totalMatching + ' notícias encontradas';
+      emptyState.classList.toggle('hidden', totalMatching !== 0);
+
+      // Atualiza visibilidade do controle "Ver mais"
+      if (loadMoreBtn) {
+        var lmWrapper = document.getElementById('carregar-mais-wrapper');
+        if (lmWrapper) {
+          lmWrapper.classList.toggle('hidden', !(currentLimit < Infinity && currentLimit < totalMatching));
+        }
+      }
     }
 
-    searchInput.addEventListener('input', updateResults);
+    // Clique no botão "Carregar mais"
+    if (loadMoreBtn) {
+      loadMoreBtn.addEventListener('click', function () {
+        currentLimit += LOAD_MORE_STEP;
+        updateResults();
+        loadMoreBtn.focus();
+      });
+    }
+
+    // Ao digitar na busca: reseta para o limite inicial do breakpoint atual
+    searchInput.addEventListener('input', function () {
+      currentLimit = getInitialLimit();
+      updateResults();
+    });
 
     sortButtons.forEach(function (button) {
       button.addEventListener('click', function () {
@@ -403,6 +446,7 @@
           item.setAttribute('aria-pressed', item === button ? 'true' : 'false');
         });
 
+        currentLimit = getInitialLimit();
         sortArticles();
         updateResults();
       });
@@ -416,6 +460,7 @@
           item.setAttribute('aria-pressed', item === button ? 'true' : 'false');
         });
 
+        currentLimit = getInitialLimit();
         updateResults();
       });
     });

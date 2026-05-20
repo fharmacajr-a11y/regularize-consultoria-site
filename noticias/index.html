@@ -186,18 +186,18 @@
 
     <section class="py-8 md:py-10 bg-slate-50">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8">
           <aside class="order-2 lg:order-1 lg:col-span-4 xl:col-span-3">
             <div class="sticky top-28 space-y-6">
               <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm">
-                <h2 class="text-base font-bold text-slate-950 mb-3">Pesquisar no blog</h2>
+                <h2 class="text-base font-bold text-slate-950 mb-3">Pesquisar notícias</h2>
                 <label for="blog-search" class="block text-sm font-medium text-slate-600 mb-2">Tema, órgão ou palavra-chave</label>
                 <input id="blog-search" type="search" class="form-input" placeholder="Ex.: AFE, SNGPC, vigilância..." autocomplete="off" />
-                <p id="blog-result-count" class="mt-3 text-sm text-slate-500" aria-live="polite">11 artigos encontrados</p>
+                <p id="blog-result-count" class="mt-3 text-sm text-slate-500" aria-live="polite">11 notícias encontradas</p>
               </div>
 
               <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm">
-                <h2 class="text-base font-bold text-slate-950 mb-4">Editorias</h2>
+                <h2 class="text-base font-bold text-slate-950 mb-4">Categorias</h2>
                 <div class="flex flex-col gap-2" aria-label="Filtros de categoria">
                   <button type="button" class="blog-filter-button flex items-center justify-between rounded-lg border border-slate-200 px-3 py-2.5 text-left text-sm font-semibold text-slate-600 hover:border-brand hover:text-brand transition-colors" data-blog-category="Todos" aria-pressed="true"><span>Todos</span><span class="text-xs text-slate-400">11</span></button>
                   <button type="button" class="blog-filter-button flex items-center justify-between rounded-lg border border-slate-200 px-3 py-2.5 text-left text-sm font-semibold text-slate-600 hover:border-brand hover:text-brand transition-colors" data-blog-category="ANVISA" aria-pressed="false"><span>ANVISA</span><span class="text-xs text-slate-400">5</span></button>
@@ -438,34 +438,43 @@
               </article>
             </div>
 
+            <div id="carregar-mais-wrapper" class="hidden mt-6 pt-5 border-t border-slate-200 flex justify-center lg:mt-8 lg:pt-6">
+              <button id="btn-carregar-mais" type="button" class="inline-flex items-center gap-2 py-2 text-brand text-sm font-semibold hover:text-brand-dark underline-offset-4 hover:underline transition-colors duration-200 focus:outline-none focus:underline">
+                Ver mais notícias
+                <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                </svg>
+              </button>
+            </div>
+
             <div id="blog-empty-state" class="hidden mt-8 bg-white border border-dashed border-slate-300 rounded-xl p-8 text-center">
-              <h2 class="text-xl font-bold text-slate-900 mb-2">Nenhum artigo encontrado</h2>
+              <h2 class="text-xl font-bold text-slate-900 mb-2">Nenhuma notícia encontrada</h2>
               <p class="text-slate-500">Tente buscar por outro termo ou selecione a categoria “Todos”.</p>
             </div>
 
-            <div class="my-10 border-l-4 border-brand bg-white px-6 py-6 shadow-sm md:px-8">
-              <p class="mb-2 text-xs font-semibold uppercase tracking-widest text-brand">Nota editorial</p>
+            <div class="my-6 lg:my-10 border-l-4 border-brand bg-white px-6 py-6 shadow-sm md:px-8">
+              <p class="mb-2 text-xs font-semibold uppercase tracking-widest text-brand">Orientação técnica</p>
               <h2 class="text-2xl font-bold text-slate-950 mb-3">Conteúdo informativo, apoio quando necessário</h2>
               <p class="text-slate-600 leading-relaxed mb-5 max-w-3xl">
                 Se a leitura indicar que seu caso envolve documentos pendentes, inconsistências cadastrais ou acompanhamento de processo, a Regularize pode avaliar a situação e orientar os próximos passos de forma técnica.
               </p>
-              <a href="/whatsapp/?text=Ol%C3%A1%2C%20li%20um%20artigo%20no%20site%20e%20gostaria%20de%20orienta%C3%A7%C3%A3o%20sobre%20regulariza%C3%A7%C3%A3o." target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center px-5 py-3 rounded-lg bg-brand text-white text-sm font-semibold hover:bg-brand-dark transition-colors">Conversar pelo WhatsApp</a>
+              <a href="/whatsapp/?text=Ol%C3%A1%2C%20li%20uma%20not%C3%ADcia%20no%20site%20e%20gostaria%20de%20orienta%C3%A7%C3%A3o%20sobre%20regulariza%C3%A7%C3%A3o." target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center px-5 py-3 rounded-lg bg-brand text-white text-sm font-semibold hover:bg-brand-dark transition-colors">Conversar pelo WhatsApp</a>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="py-12 bg-slate-50">
+    <section class="py-8 md:py-12 bg-slate-50">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="rounded-2xl border border-slate-200 bg-white shadow-sm p-5 sm:p-7 md:p-8 lg:p-10">
-          <p class="text-xs font-semibold uppercase tracking-widest text-brand mb-3">Linha editorial</p>
+          <p class="text-xs font-semibold uppercase tracking-widest text-brand mb-3">Sobre o conteúdo</p>
           <h2 class="text-2xl font-bold tracking-tight text-slate-900 mb-6">
             Conteúdos para acompanhar obrigações sanitárias
           </h2>
           <div class="space-y-4 text-slate-600 leading-relaxed text-sm max-w-4xl">
             <p>
-              A área de notícias reúne orientações introdutórias sobre temas que aparecem na rotina de farmácias, drogarias, distribuidoras e outras empresas reguladas. Os artigos tratam de AFE, documentação técnica, Farmácia Popular, SNGPC, instabilidades em sistemas oficiais, exigências cadastrais e cuidados relacionados à regularização sanitária.
+              A área de notícias reúne orientações introdutórias sobre temas que aparecem na rotina de farmácias, drogarias, distribuidoras e outras empresas reguladas. As notícias tratam de AFE, documentação técnica, Farmácia Popular, SNGPC, instabilidades em sistemas oficiais, exigências cadastrais e cuidados relacionados à regularização sanitária.
             </p>
             <p>
               O conteúdo é informativo e não substitui a análise individual de documentos, protocolos ou exigências recebidas. Cada empresa pode ter obrigações diferentes conforme atividade, município, estado, tipo de produto, responsável técnico, histórico cadastral e interação com órgãos e sistemas como ANVISA, CNES, Vigilância Sanitária, CRF, M.A.P.A, SNCR e Polícia Federal.
@@ -572,6 +581,6 @@
 
   </div>
 
-  <script src="/assets/js/main.min.js?v=20260506-1"></script>
+  <script src="/assets/js/main.min.js?v=20260520-1"></script>
 </body>
 </html>
