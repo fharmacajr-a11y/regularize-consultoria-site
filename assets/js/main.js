@@ -146,8 +146,13 @@
     AVISOS_COUNT = normalizeAvisosCount(count);
 
     document.querySelectorAll('.aviso-badge').forEach(function (badge) {
-      badge.textContent = AVISOS_COUNT;
-      badge.style.display = 'flex';
+      if (AVISOS_COUNT === 0) {
+        badge.textContent = '';
+        badge.classList.add('hidden');
+      } else {
+        badge.textContent = AVISOS_COUNT;
+        badge.classList.remove('hidden');
+      }
     });
   }
 
