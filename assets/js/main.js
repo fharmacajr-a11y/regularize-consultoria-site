@@ -128,10 +128,10 @@
      ================================================================= */
   var avisoLista = document.getElementById('avisos-lista');
   var AVISOS_COUNT = 0;
-  var AVISOS_FALLBACK_COUNT = 0;
+  var AVISOS_FALLBACK_COUNT = 3;
   var AVISOS_STORAGE_KEY = 'avisos_count';
   var AVISOS_STORAGE_VERSION_KEY = 'avisos_count_version';
-  var AVISOS_STORAGE_VERSION = '2026-04-28-normalizado';
+  var AVISOS_STORAGE_VERSION = '2026-05-19-sncr';
 
   function normalizeAvisoStatus(value) {
     return (value || '').toLowerCase().trim();
@@ -147,11 +147,10 @@
 
     document.querySelectorAll('.aviso-badge').forEach(function (badge) {
       if (AVISOS_COUNT === 0) {
-        badge.textContent = '';
-        badge.classList.add('hidden');
+        badge.style.display = 'none';
       } else {
         badge.textContent = AVISOS_COUNT;
-        badge.classList.remove('hidden');
+        badge.style.display = 'flex';
       }
     });
   }
