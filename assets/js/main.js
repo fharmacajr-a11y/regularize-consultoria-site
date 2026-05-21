@@ -131,7 +131,7 @@
   var AVISOS_FALLBACK_COUNT = 3;
   var AVISOS_STORAGE_KEY = 'avisos_count';
   var AVISOS_STORAGE_VERSION_KEY = 'avisos_count_version';
-  var AVISOS_STORAGE_VERSION = '2026-05-19-sncr';
+  var AVISOS_STORAGE_VERSION = '2026-05-21-sncr';
 
   function normalizeAvisoStatus(value) {
     return (value || '').toLowerCase().trim();
